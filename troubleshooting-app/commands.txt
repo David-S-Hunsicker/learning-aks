@@ -14,3 +14,7 @@ docker push davidhunsicker/my-troubleshooting-app:v1
 
 # -e passes the environment variables we need for the script to run.
 docker run -e INTERVAL=5 -e HOST=microsoft.com davidhunsicker/my-troubleshooting-app:v1
+
+# stop
+docker ps # get your image id
+docker stop {IMAGE ID}
