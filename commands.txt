@@ -1,1 +1,5 @@
 docker build -t my-simple-website DockerFile.
+
+docker tag my-simple-website davidhunsicker/my-simple-website:v1
+
+docker run -p 80:80 davidhunsicker/my-simple-website:v1
