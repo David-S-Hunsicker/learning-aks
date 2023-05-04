@@ -1,0 +1,16 @@
+# view permisions
+ls -l
+
+# add executable permissions
+ chmod +x ./my-troubleshooting-app.sh
+
+docker build -t my-troubleshooting-app -f DockerFile .
+
+docker tag my-troubleshooting-app davidhunsicker/my-troubleshooting-app:v1
+
+docker push davidhunsicker/my-troubleshooting-app:v1
+# Notes
+# You might need to sign in. Use docker desktop to sign in easily.
+
+# -e passes the environment variables we need for the script to run.
+docker run -e INTERVAL=5 -e HOST=microsoft.com davidhunsicker/my-troubleshooting-app:v1
