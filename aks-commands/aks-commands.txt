@@ -10,3 +10,15 @@ az aks create -g aks-rg -n aks --node-count 2 --generate-ssh-keys
 az aks install-cli
 
 # After creating the aks go to it then go to Overview. Under Get Started, click Connect via cloud shell. use those commands.
+
+# install aks extension
+az extension add --name aks-preview
+
+az feature show --namespace "Microsoft.ContainerService" --name "AKS-VPAPreview"
+az feature register --namespace "Microsoft.ContainerService" --name "AKS-VPAPreview"
+# check registration afterward
+az feature show --namespace "Microsoft.ContainerService" --name "AKS-VPAPreview"
+az provider register --namespace Microsoft.ContainerService
+
+#kn = k config set-context --curent --namespace
+#k = kubectl

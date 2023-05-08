@@ -1,0 +1,1 @@
+kubectl create deployment nginx-dryrun --image nginx --replicas 2 --dry-run=client -o yaml > nginx-dryrun.yaml

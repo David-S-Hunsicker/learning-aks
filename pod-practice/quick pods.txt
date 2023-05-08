@@ -1,0 +1,35 @@
+kubectl run nginx --image nginx
+kubectl get pod
+
+kubectl run flask --image tiangolo/uwsgi-nginx-flask:python3.7
+kubectl get pod
+
+# Watch them come online
+kubectl get pod -w
+ctrl-c
+
+kubectl get pod -o wide
+# Check the IP of the flask image
+
+kubectl exec -it nginx -- bash
+curl {flask-ip}
+# Should return -> Hello World from Flask in a uWSGI Nginx Docker container with Python 3.7
+exit
+
+# kubernetes-objects.yaml is a deployment. You can run
+kubectl apply -f .\kubernetes-objects.yaml
+# Then check
+kubectl get deployment
+kubectl get pod
+
+# You'll see the new deployment. The deployment will maintain the pod
+# Delete the deployed pod and a new one will be created in its place. That's the magic of K8s.
+
+# Make sure you do the following for non-deployment based pods.
+kubectl get pod
+kubectl delete pod {podx}
+
+
+# Cleaning up
+kubectl get deployments
+kubectl delete deployment flask-app-deployment
